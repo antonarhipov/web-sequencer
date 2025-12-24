@@ -340,6 +340,7 @@ This document contains the detailed enumerated task list for implementing the We
 - [x] 10.1.3 Display loop length in UI
 - [x] 10.1.4 Display per-track event counts in track list
 - [x] 10.1.5 Add real-time audio waveform visualization using AnalyserNode and canvas
+- [x] 10.1.6 Add per-track color visualization (each track has its own color, colors blend based on active tracks)
 
 ### Debug Panel
 > Plan: P10.2 | Requirements: Req 32

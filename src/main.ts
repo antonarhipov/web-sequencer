@@ -18,7 +18,7 @@ import {
   getTransportState,
 } from './audio/scheduler'
 import type { TransportState } from './audio/scheduler'
-import { initVisualizer, startVisualizer, stopVisualizer } from './ui/visualizer'
+import { initVisualizer, startVisualizer, stopVisualizer, setVisualizerTracks, updateVisualizerPlayhead } from './ui/visualizer'
 
 // Example DSL program to prefill the editor
 const exampleProgram = `// Web DSL Music Sequencer - Example Program
@@ -202,6 +202,7 @@ function onTransportStateChange(state: TransportState): void {
  */
 function onPlayheadUpdate(position: number): void {
   updatePlayheadDisplay(position)
+  updateVisualizerPlayhead(position)
 }
 
 /**
@@ -342,6 +343,9 @@ function initializeScheduler(result: CompilationResult): void {
   // Build track controls with event counts (10.1.4)
   const trackNames = getTrackNames(result.events)
   buildTrackControls(trackNames, result.events)
+  
+  // Set up visualizer with track colors
+  setVisualizerTracks(trackNames, result.events)
   
   // Update debug panel (10.2.3, 10.2.4, 10.2.5)
   updateDebugPanel(result)
