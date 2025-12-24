@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web DSL Music Sequencer</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <h1>Web DSL Music Sequencer</h1>
+      </header>
+      
+      <main class="app-main">
+        <section class="editor-panel">
+          <div class="panel-header">
+            <h2>DSL Editor</h2>
+            <div class="controls">
+              <button id="compile-btn" class="btn btn-compile">Compile</button>
+              <button id="play-btn" class="btn btn-play">Play</button>
+              <button id="stop-btn" class="btn btn-stop">Stop</button>
+              <button id="restart-btn" class="btn btn-restart">Restart</button>
+              <label class="loop-toggle">
+                <input type="checkbox" id="loop-checkbox" checked />
+                <span>Loop</span>
+              </label>
+              <span id="bpm-display" class="bpm-display">BPM: --</span>
+              <span id="loop-length-display" class="loop-length-display">Loop: --</span>
+              <span id="playhead-display" class="playhead-display">0:00.0</span>
+            </div>
+          </div>
+          <div class="visualizer-container">
+            <canvas id="waveform-canvas" class="waveform-canvas"></canvas>
+          </div>
+          <div id="track-controls" class="track-controls"></div>
+          <textarea 
+            id="dsl-editor" 
+            class="dsl-editor"
+            placeholder="Enter your DSL code here..."
+            spellcheck="false"
+          ></textarea>
+        </section>
+        
+        <section class="output-panel">
+          <div class="panel-header">
+            <h2>Output</h2>
+            <button id="debug-toggle-btn" class="btn btn-debug">Show Debug</button>
+          </div>
+          <div id="output" class="output-content">
+            <p class="output-placeholder">Compilation results will appear here...</p>
+          </div>
+          <div id="debug-panel" class="debug-panel" style="display: none;">
+            <div class="debug-header">
+              <h3>Debug Panel</h3>
+            </div>
+            <div class="debug-content">
+              <details id="debug-ast">
+                <summary>Compiled AST</summary>
+                <pre id="debug-ast-content">No AST available</pre>
+              </details>
+              <details id="debug-events">
+                <summary>Compiled Events</summary>
+                <pre id="debug-events-content">No events available</pre>
+              </details>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
